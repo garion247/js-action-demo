@@ -1,5 +1,5 @@
 name: 'Greeter'
-description: 'A friendly greeter action that returns a composed greeting'
+description: 'A friendly greeter action that returns a greeting and can comment on PRs'
 author: 'js-action-demo'
 branding:
   icon: 'smile'
@@ -13,6 +13,14 @@ inputs:
     description: 'Uppercase the greeting'
     required: false
     default: 'false'
+  post-comment:
+    description: 'Post the greeting as a comment on the PR'
+    required: false
+    default: 'false'
+  github-token:
+    description: 'Token used to post the comment'
+    required: false
+    default: ${{ github.token }}
 
 outputs:
   greeting:
