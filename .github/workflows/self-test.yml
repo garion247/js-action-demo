@@ -1,0 +1,30 @@
+name: Self Test
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  use-greeter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Quiet greeting
+        id: quiet
+        uses: ./
+        with:
+          name: world
+
+      - name: Loud greeting
+        id: loud
+        uses: ./
+        with:
+          name: world
+          shout: 'true'
+
+      - name: Inspect outputs
+        run: |
+          echo "Quiet greeting: ${{ steps.quiet.outputs.greeting }} (len ${{ steps.quiet.outputs.length }})"
+          echo "Loud greeting:  ${{ steps.loud.outputs.greeting }} (len ${{ steps.loud.outputs.length }})"
