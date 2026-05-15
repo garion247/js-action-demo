@@ -1,0 +1,25 @@
+name: 'Greeter'
+description: 'A friendly greeter action that returns a composed greeting'
+author: 'js-action-demo'
+branding:
+  icon: 'smile'
+  color: 'green'
+
+inputs:
+  name:
+    description: 'Who to greet'
+    required: true
+  shout:
+    description: 'Uppercase the greeting'
+    required: false
+    default: 'false'
+
+outputs:
+  greeting:
+    description: 'The composed greeting string'
+  length:
+    description: 'Number of characters in the greeting'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
